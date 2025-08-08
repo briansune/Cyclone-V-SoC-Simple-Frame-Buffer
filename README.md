@@ -57,6 +57,10 @@
 	}; 
 ```
 
+## FPGA Resources Usage
+
+<img width="1048" height="47" alt="image" src="https://github.com/user-attachments/assets/bc898251-75f9-4ebc-ae9c-e7eacd155de0" />
+
 ## Verilog Instantiation
 
 ```
