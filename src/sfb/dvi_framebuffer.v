@@ -196,14 +196,6 @@ module dvi_framebuffer
 		ccd_config_enable_out_r1 <= ccd_config_enable_out_r0;
 	end
 	
-	reg		ccd_config_x2_mode_out_r0;
-	reg		ccd_config_x2_mode_out_r1;
-	
-	always @ (posedge vid_pclk_i)begin
-		ccd_config_x2_mode_out_r0 <= config_x2_mode_out_w;
-		ccd_config_x2_mode_out_r1 <= ccd_config_x2_mode_out_r0;
-	end
-	
 	reg		[bw_fbiff_a-1:0]  ccd_fbuff_add_r0;
 	reg		[bw_fbiff_a-1:0]  ccd_fbuff_add_r1;
 	
@@ -211,14 +203,6 @@ module dvi_framebuffer
 		ccd_fbuff_add_r0 <= frame_buffer_addr_out_w;
 		ccd_fbuff_add_r1 <= ccd_fbuff_add_r0;
 	end
-	
-	// reg		ccd_op_x2_mode_out_r0;
-	// reg		ccd_op_x2_mode_out_r1;
-	
-	// always @ (posedge outport_clk_i)begin
-		// ccd_op_x2_mode_out_r0 <= config_x2_mode_out_w;
-		// ccd_op_x2_mode_out_r1 <= ccd_op_x2_mode_out_r0;
-	// end
 	// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 	
 	//-----------------------------------------------------------------
@@ -282,7 +266,7 @@ module dvi_framebuffer
 		if (!vid_nrst_i)begin
 			bsf_cnt_r0 <= 3'd0;
 			vid_dout <= 24'd0;
-		end else begin
+		end else if(ccd_config_enable_out_r1)begin
 			bsf_cnt_r0 <= bsf_cnt;
 			case(bsf_cnt_r0)
 				3'd0: vid_dout <= pixel_data_w[(32*0)+:24];
@@ -294,6 +278,8 @@ module dvi_framebuffer
 				3'd6: vid_dout <= pixel_data_w[(32*6)+:24];
 				3'd7: vid_dout <= pixel_data_w[(32*7)+:24];
 			endcase
+		end else begin
+			vid_dout <= 24'd0;
 		end
 	end
 	
