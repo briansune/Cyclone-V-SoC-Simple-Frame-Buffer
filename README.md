@@ -14,6 +14,15 @@
 
 + Chat GPT - GPT-5 model
 
+## Register Map
+
+|Address Offset|R/W|Description|
+|-|-|-|
+|0|R/W|[0] - Enable|
+|4|R|[16] - Y Position, [16] - X:Position|
+|8|R/W|SDRAM Address / Burst_Length / (Bus_Width/8)|
+|C|R|"FB V"|
+
 ## Block Diagram
 
 <img width="461" height="202" alt="sfv" src="https://github.com/user-attachments/assets/d52c0d5e-33dd-4ac3-be29-1a27ded67267" />
