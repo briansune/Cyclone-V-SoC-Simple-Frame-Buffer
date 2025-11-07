@@ -1,5 +1,13 @@
 # The Video DMA via Simple Frame Buffer
 
+## If this project is constructive, welcome to donate a drink to PayPal.
+
+<img src="images/qrcode.png" style="height:20%; width:20%">
+
+or 
+
+paypal.me/briansune
+
 ## References
 
 + Highly based on "https://github.com/ultraembedded/core_dvi_framebuffer".
